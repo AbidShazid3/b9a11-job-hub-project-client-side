@@ -52,7 +52,7 @@ const NavBar = () => {
                 {
                     user ?
                         <div className="flex gap-2 items-center">
-                            <img src={user?.photoURL || "https://t4.ftcdn.net/jpg/04/72/81/55/360_F_472815510_sdB7bklhuyVQ9eCx49WUV3CvhoLcSsvj.jpg"} alt="" className="rounded-full w-8 h-8 md:w-10 md:h-10 lg:w-10 lg:h-10"
+                            <img src={user?.photoURL || "Null"} alt="" className="rounded-full w-8 h-8 md:w-10 md:h-10 lg:w-10 lg:h-10"
                                 data-tooltip-id="my-tooltip"
                                 data-tooltip-content={user?.displayName || "Null"}
                             />
@@ -61,8 +61,7 @@ const NavBar = () => {
                         </div>
                         :
                         <div>
-                            <Link to="/login" className="btn btn-sm btn-accent text-lg mr-1">{loading ? "Loading..." : "LogIn"}</Link>
-                            <Link to="/register" className="btn btn-sm btn-accent text-lg">{loading ? "Loading..." : "Register"}</Link>
+                            <Link to="/login" className="btn btn-accent text-lg mr-1">{loading ? "Loading..." : "LogIn"}</Link>
                         </div>
                 }
             </div>

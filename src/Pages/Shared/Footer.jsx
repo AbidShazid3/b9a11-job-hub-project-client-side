@@ -6,7 +6,7 @@ import twitter from "../../assets/images/twitter.png";
 
 const Footer = () => {
     return (
-        <div>
+        <div className="mt-10">
             <footer className="footer p-10 bg-base-200 text-base-content">
                 <aside>
                     <div className="flex items-center gap-2">

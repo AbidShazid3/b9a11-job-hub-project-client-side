@@ -3,11 +3,15 @@ import useAuth from "../../hooks/useAuth";
 import photo1 from "../../assets/images/login.jpg";
 import photo2 from "../../assets/images/logo.png";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaRegEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const LogIn = () => {
     const { user, logInUser, googleLogInUser, githubLogIn } = useAuth();
+    const [showPassword, setShowPassword] = useState(false);
 
     const location = useLocation();
     // console.log(location);
@@ -27,11 +31,13 @@ const LogIn = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 e.target.reset();
+                toast.success('Login successful!');
                 navigate(location?.state ? location?.state : "/");
 
             })
             .catch(error => {
                 console.log(error.message);
+                toast.error(error.message);
             })
     }
 
@@ -40,10 +46,12 @@ const LogIn = () => {
             .then(result => {
                 const googleLoggedUser = result.user;
                 console.log(googleLoggedUser);
+                toast.success('Login successful!');
                 navigate(location?.state ? location?.state : "/");
             })
             .catch(error => {
                 console.log(error.message);
+                toast.error(error.message);
             })
     }
 
@@ -52,10 +60,12 @@ const LogIn = () => {
             .then(result => {
                 const githubSignInUser = result.user;
                 console.log(githubSignInUser);
+                toast.success('Login successful!');
                 navigate(location?.state ? location?.state : "/");
             })
             .catch(error => {
                 console.log(error.message);
+                toast.error(error.message);
             })
     }
 
@@ -101,7 +111,8 @@ const LogIn = () => {
                             <input
                                 id='LoggingEmailAddress'
                                 autoComplete='email'
-                                name='email'
+                                name='email' 
+                                required 
                                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                                 type='email'
                             />
@@ -117,13 +128,21 @@ const LogIn = () => {
                                 </label>
                             </div>
 
-                            <input
-                                id='loggingPassword'
-                                autoComplete='current-password'
-                                name='password'
-                                className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
-                                type='password'
-                            />
+                            <div className="relative">
+                                <input
+                                    id='loggingPassword'
+                                    autoComplete='current-password'
+                                    name='password'
+                                    required 
+                                    className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
+                                    type={showPassword ? "text" : "password"}
+                                />
+                                <span onClick={() => setShowPassword(!showPassword)} className="absolute top-4 right-5 cursor-pointer">
+                                    {
+                                        showPassword ? <FaEyeSlash></FaEyeSlash> : <FaRegEye ></FaRegEye>
+                                    }
+                                </span>
+                            </div>
                         </div>
                         <div className='mt-6'>
                             <button
@@ -164,9 +183,9 @@ const LogIn = () => {
 
                         <Link
                             to='/register'
-                            className='text-sm text-gray-500 uppercase  hover:underline'
+                            className='text-lg text-gray-500 uppercase  hover:underline'
                         >
-                            or new here? sign up
+                            new here? <span className="text-red-600 font-bold">register</span>
                         </Link>
 
                         <span className='w-1/5 border-b  md:w-1/4'></span>
