@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
-import fb from "../../assets/images/social/facebook.png";
-import insta from "../../assets/images/social/insta.png";
-import twitter from "../../assets/images/social/twitter.png";
+import fb from "../../assets/images/facebook.png";
+import insta from "../../assets/images/insta.png";
+import twitter from "../../assets/images/twitter.png";
 
 const Footer = () => {
     return (
         <div>
             <footer className="footer p-10 bg-base-200 text-base-content">
                 <aside>
-                    <div className="flex items-center gap-3">
-                        <img src={logo} alt="" className="size-12" />
-                        <h2 className="text-3xl font-extrabold">JobHub</h2>
+                    <div className="flex items-center gap-2">
+                        <img src={logo} alt="" className="size-10" />
+                        <h2 className="text-3xl font-bold">JobHub</h2>
                     </div>
                     <p>Providing reliable tech since 1992</p>
                 </aside>

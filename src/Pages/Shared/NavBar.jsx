@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import lo from "../../assets/images/logo.png"
+import lo from "../../assets/images/logo.png";
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import useAuth from "../../hooks/useAuth";
