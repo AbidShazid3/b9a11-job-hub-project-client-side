@@ -3,10 +3,11 @@ import lo from "../../assets/images/logo.png";
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import useAuth from "../../hooks/useAuth";
+import 'animate.css';
 
 
 const NavBar = () => {
-    const { user,loading, logOutUser } = useAuth();
+    const { user, loading, logOutUser } = useAuth();
 
     const handleSignOutUser = () => {
         logOutUser()
@@ -19,10 +20,12 @@ const NavBar = () => {
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/alljobs">All Jobs</NavLink></li>
-        <li><NavLink to="/appliedjob">Applied Jobs</NavLink></li>
-        <li><NavLink to="/addjob">Add A Job</NavLink></li>
-        <li><NavLink to="/myjobs">My Jobs</NavLink></li>
-        <li><NavLink to="/profile">User Profile</NavLink></li>
+        {user && <>
+            <li><NavLink to="/appliedjob">Applied Jobs</NavLink></li>
+            <li><NavLink to="/addjob">Add A Job</NavLink></li>
+            <li><NavLink to="/myjobs">My Jobs</NavLink></li>
+            <li><NavLink to="/profile">User Profile</NavLink></li>
+        </>}
         <li><NavLink to="/blogs">Blogs</NavLink></li>
     </>
 
@@ -48,7 +51,6 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {/* <input onChange={handleToggle} type="checkbox" className="checkbox theme-controller mr-2" /> */}
                 {
                     user ?
                         <div className="flex gap-2 items-center">
@@ -60,7 +62,7 @@ const NavBar = () => {
                             <button onClick={handleSignOutUser} className="btn btn-accent text-lg">Sign Out</button>
                         </div>
                         :
-                        <div>
+                        <div className="animate__animated animate__fadeInUp">
                             <Link to="/login" className="btn btn-accent text-lg mr-1">{loading ? "Loading..." : "LogIn"}</Link>
                         </div>
                 }

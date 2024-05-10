@@ -9,7 +9,7 @@ const Main = () => {
     return (
         <div className="font-lato">
             <ToastContainer></ToastContainer>
-            <div className="container mx-auto p-1 md:p-2 lg:px-5">
+            <div className="container mx-auto p-1 md:p-2 lg:px-4">
                 <NavBar></NavBar>
                 <Outlet></Outlet>
             </div>

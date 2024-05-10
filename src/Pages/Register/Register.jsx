@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { FaRegEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub, FaRegEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
@@ -8,7 +9,7 @@ import photo2 from "../../assets/images/register 2.jpg"
 
 
 const Register = () => {
-    const { user, createUser, updateUserProfile } = useAuth();
+    const { user, createUser, updateUserProfile, googleLogInUser, githubLogIn } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -52,9 +53,38 @@ const Register = () => {
             })
     }
 
+    const handleGoogleLogIn = () => {
+        googleLogInUser()
+            .then(result => {
+                const googleLoggedUser = result.user;
+                console.log(googleLoggedUser);
+                toast.success('Login successful!');
+                navigate(location?.state ? location?.state : "/");
+            })
+            .catch(error => {
+                console.log(error.message);
+                toast.error(error.message);
+            })
+    }
+
+    const handleGithubLogIn = () => {
+        githubLogIn()
+            .then(result => {
+                const githubSignInUser = result.user;
+                console.log(githubSignInUser);
+                toast.success('Login successful!');
+                navigate(location?.state ? location?.state : "/");
+            })
+            .catch(error => {
+                console.log(error.message);
+                toast.error(error.message);
+            })
+    }
+
     if (user) {
         return <Navigate to="/"></Navigate>
     }
+
 
     return (
         <div className="bg-slate-200 rounded-xl mt-10">
@@ -150,9 +180,33 @@ const Register = () => {
                                     Sign Up
                                 </button>
                             </div>
+                            <div
+                        onClick={handleGoogleLogIn}
+                        className='flex cursor-pointer items-center justify-center mt-4  transition-colors duration-300 transform border rounded-lg bg-blue-500   hover:bg-gray-50 '
+                    >
+                        <div className='px-4 py-2'>
+                            <FcGoogle className="w-6 h-6" />
+                        </div>
+
+                        <span className='w-5/6 px-4 py-3 font-bold text-center'>
+                            Sign in with Google
+                        </span>
+                    </div>
+                    <div
+                        onClick={handleGithubLogIn}
+                        className='flex cursor-pointer items-center justify-center mt-4 transition-colors duration-300 transform border rounded-lg bg-blue-500   hover:bg-gray-50 '
+                    >
+                        <div className='px-4 py-2'>
+                            <FaGithub className="w-6 h-6" />
+                        </div>
+
+                        <span className='w-5/6 px-4 py-3 font-bold text-center'>
+                            Sign in with Github
+                        </span>
+                    </div>
                             <div className='text-center mt-5'>
                                 <Link
-                                    to='/register'
+                                    to='/login'
                                     className='text-sm text-gray-500 uppercase  hover:underline'
                                 >
                                     already have an account? <span className="text-red-600 font-bold">login now</span>
