@@ -189,7 +189,7 @@ const Register = () => {
                         </div>
 
                         <span className='w-5/6 px-4 py-3 font-bold text-center'>
-                            Sign in with Google
+                            Sign up with Google
                         </span>
                     </div>
                     <div
@@ -201,7 +201,7 @@ const Register = () => {
                         </div>
 
                         <span className='w-5/6 px-4 py-3 font-bold text-center'>
-                            Sign in with Github
+                            Sign up with Github
                         </span>
                     </div>
                             <div className='text-center mt-5'>

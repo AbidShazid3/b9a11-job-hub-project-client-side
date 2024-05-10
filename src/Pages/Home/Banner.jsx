@@ -12,7 +12,7 @@ const Banner = () => {
                     <img src={banner1} className="w-full h-auto rounded-xl object-cover" />
                     <div className="absolute flex items-end h-full bg-gradient-to-r from-[#151515] to-[#15151500] w-2/3 rounded-xl ">
                         <div className="text-white space-y-2 p-4">
-                            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold animate__animated animate__zoomInDown animate__delay-2s">Tailored Work Solutions for Professional</h2>
+                            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold animate__animated animate__zoomInDown animate__delay-2s animate__repeat-3">Tailored Work Solutions for Professional</h2>
                             <p className="text-sm md:text-base lg:text-base font-medium">Embark on a career journey that matches your lifestyle and aspirations with our diverse</p>
                         </div>
                     </div>
