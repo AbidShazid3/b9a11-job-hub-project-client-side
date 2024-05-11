@@ -9,7 +9,6 @@ const HappyCustomer = () => {
             .then(res => res.json())
             .then(data => {
                 setCustomers(data);
-                console.log(data);
             })
     }, [])
 

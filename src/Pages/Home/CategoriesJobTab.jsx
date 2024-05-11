@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import JobCategorieCard from '../../components/JobCategoriesCard/JobCategorieCard';
+import { Link } from 'react-router-dom';
 
 const CategoriesJobTab = () => {
     const [jobs, setJobs] = useState([]);
@@ -18,6 +19,8 @@ const CategoriesJobTab = () => {
     const handleTabSelect = index => {
         setActiveTab(index);
     }
+
+    const sixJobs = jobs.slice(0, 6)
 
     return (
         <Tabs className='mt-10' selectedIndex={activeTab} onSelect={handleTabSelect}>
@@ -42,11 +45,14 @@ const CategoriesJobTab = () => {
                 <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-5'>
                         {
-                            jobs.map(job => <JobCategorieCard
+                            sixJobs.map(job => <JobCategorieCard
                                 key={job._id}
                                 job={job}
                             ></JobCategorieCard>)
                         }
+                    </div>
+                    <div className='flex justify-center mt-10'>
+                        <Link to="/alljobs" className='btn btn-accent text-lg'>View More Jobs</Link>
                     </div>
                 </TabPanel>
                 <TabPanel>
