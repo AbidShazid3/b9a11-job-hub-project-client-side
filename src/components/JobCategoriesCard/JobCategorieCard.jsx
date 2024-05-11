@@ -20,7 +20,7 @@ const JobCategorieCard = ({ job }) => {
 
     return (
         <div className='hover:scale-[1.05] transition-all'>
-            <div className="card bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl border border-gray-200">
                 <div className="card-body">
                     <h2 className="text-2xl font-bold">{jobTitle}</h2>
                     <div className='flex items-center gap-2 text-lg font-bold'>

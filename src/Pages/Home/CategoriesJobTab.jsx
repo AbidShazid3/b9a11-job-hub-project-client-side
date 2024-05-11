@@ -22,7 +22,7 @@ const CategoriesJobTab = () => {
     return (
         <Tabs className='mt-10' selectedIndex={activeTab} onSelect={handleTabSelect}>
             <div className='p-10'>
-                <h1 className='text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl '>
+                <h1 className='text-2xl font-semibold text-center text-gray-800 capitalize lg:text-4xl '>
                     Explore Job Categories
                 </h1>
 
