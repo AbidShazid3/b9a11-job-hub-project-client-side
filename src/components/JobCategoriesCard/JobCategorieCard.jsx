@@ -1,7 +1,23 @@
 import PropTypes from 'prop-types';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const JobCategorieCard = ({ job }) => {
-    const { userName, jobTitle, jobSalary, JobPostDate, jobDeadline, jobApplicants } = job;
+    const { user } = useAuth();
+    const { _id, userName, jobTitle, jobSalary, JobPostDate, jobDeadline, jobApplicants } = job;
+    const navigate = useNavigate();
+
+    const handleLinkClick = () => {
+        if (!user) {
+            toast.error("Login Now");
+            navigate('/login');
+
+        }
+    }
+
     return (
         <div className='hover:scale-[1.05] transition-all'>
             <div className="card bg-base-100 shadow-xl">
@@ -28,7 +44,10 @@ const JobCategorieCard = ({ job }) => {
                         <p className='text-base font-bold'>{userName}</p>
                     </div>
                     <div className="card-actions">
-                        <button className="btn btn-outline btn-accent w-full font-extrabold">View Details</button>
+                        {user ?
+                            <Link to={`/categoriesJob/${_id}`} className="btn btn-outline btn-accent w-full font-extrabold">View Details</Link> : <button onClick={handleLinkClick} className="btn btn-outline btn-accent w-full font-extrabold">
+                            View Details
+                        </button>}
                     </div>
                 </div>
             </div>

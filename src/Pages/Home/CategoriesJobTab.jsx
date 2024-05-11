@@ -12,7 +12,6 @@ const CategoriesJobTab = () => {
             .then(res => res.json())
             .then(data => {
                 setJobs(data);
-                console.log(data);
             })
     }, [])
 
@@ -35,8 +34,8 @@ const CategoriesJobTab = () => {
                         <Tab>All Jobs</Tab>
                         <Tab>On Site</Tab>
                         <Tab>Remote</Tab>
+                        <Tab>HyBrid</Tab>
                         <Tab>Part-Time</Tab>
-                        <Tab>Hybrid</Tab>
                     </TabList>
                 </div>
 

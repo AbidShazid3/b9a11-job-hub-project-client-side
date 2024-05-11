@@ -11,6 +11,7 @@ import AllJobs from "../Pages/AllJobs/AllJobs";
 import AppliedJobs from "../Pages/AppliedJobs/AppliedJobs";
 import AddJob from "../Pages/AddJob/AddJob";
 import MyJobs from "../Pages/MyJobs/MyJobs";
+import JobCatDetails from "../components/JobCatDetails/JobCatDetails";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>
+            },
+            {
+                path: "/categoriesJob/:id",
+                element: <PrivetRoutes><JobCatDetails></JobCatDetails></PrivetRoutes>,
+                loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
             },
             {
                 path: "/alljobs",
