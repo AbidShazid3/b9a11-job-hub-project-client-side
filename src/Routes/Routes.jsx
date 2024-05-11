@@ -12,6 +12,7 @@ import AppliedJobs from "../Pages/AppliedJobs/AppliedJobs";
 import AddJob from "../Pages/AddJob/AddJob";
 import MyJobs from "../Pages/MyJobs/MyJobs";
 import JobCatDetails from "../components/JobCatDetails/JobCatDetails";
+import AllJobsSingleCard from "../Pages/AllJobs/AllJobsSingleCard";
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
             {
                 path: "/alljobs",
                 element: <AllJobs></AllJobs>,
+            },
+            {
+                path: "/job/:id",
+                element: <PrivetRoutes><AllJobsSingleCard></AllJobsSingleCard></PrivetRoutes>,
+                loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
             },
             {
                 path: "/appliedjob",

@@ -46,7 +46,7 @@ const AllJobs = () => {
                                 <td>{new Date(job.JobPostDate).toLocaleDateString()}</td>
                                 <td>{new Date(job.jobDeadline).toLocaleDateString()}</td>
                                 <td>{job.jobSalary}</td>
-                                <td><Link className="btn btn-sm btn-outline btn-accent">View Details</Link></td>
+                                <td><Link to={`/job/${job._id}`} className="btn btn-sm btn-outline btn-accent">View Details</Link></td>
                             </tr>)
                         }
                     </tbody>

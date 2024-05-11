@@ -23,10 +23,7 @@ const JobCategorieCard = ({ job }) => {
             <div className="card bg-base-100 shadow-xl border border-gray-200">
                 <div className="card-body">
                     <h2 className="text-2xl font-bold">{jobTitle}</h2>
-                    <div className='flex items-center gap-2 text-lg font-bold'>
-                        <h2>Salary Range:</h2>
-                        <p>{jobSalary}</p>
-                    </div>
+                    <h2 className='text-lg font-bold'>Salary Range : {jobSalary}</h2>
                     <div className='flex items-center gap-2'>
                         <h2 className='text-base font-bold'>Post Date:</h2>
                         <p>{new Date(JobPostDate).toLocaleDateString()}</p>

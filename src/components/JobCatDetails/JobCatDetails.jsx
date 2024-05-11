@@ -7,7 +7,7 @@ const JobCatDetails = () => {
 
     return (
         <div className="mt-10">
-            <h2 className="text-4xl font-bold text-center text-gray-600 p-4">{jobCategory} Categories</h2>
+            <h2 className="text-4xl font-bold text-center text-gray-600 p-4 underline underline-offset-8">{jobCategory} Categories</h2>
             <div className="hero min-h-screen bg-base-200 shadow-xl rounded-xl">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="flex-1">
@@ -40,7 +40,6 @@ const JobCatDetails = () => {
                             <h2>Posted By:</h2>
                             <p>{userName}</p>
                         </div>
-                        <button className="btn btn-outline btn-accent w-1/5">Apply Now</button>
                     </div>
                 </div>
             </div>
