@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 
@@ -90,7 +91,7 @@ const MyJobs = () => {
                                     <button onClick={() => handleDelete(job._id)} className="btn btn-xs btn-outline btn-error">Delete</button>
                                 </th>
                                 <th>
-                                    <button className="btn btn-xs btn-outline btn-accent">Update</button>
+                                    <Link to={`/updateJob/${job._id}`}><button className="btn btn-xs btn-outline btn-accent">Update</button></Link>
                                 </th>
                             </tr>)
                         }
