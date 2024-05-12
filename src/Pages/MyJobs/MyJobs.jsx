@@ -11,7 +11,7 @@ const MyJobs = () => {
     const [myJobs, setMyJobs] = useState([]);
     const axiosSecure = useAxiosSecure();
 
-    const url = `/jobs?email=${user?.email}`;
+    const url = `/myJob?email=${user?.email}`;
 
     useEffect(() => {
         axiosSecure.get(url)

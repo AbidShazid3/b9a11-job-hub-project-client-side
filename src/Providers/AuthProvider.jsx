@@ -2,6 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword,
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import PropTypes from 'prop-types';
+import axios from "axios";
 
 
 export const AuthContext = createContext();
@@ -58,21 +59,19 @@ const AuthProvider = ({ children }) => {
             const loggedUserEmail = { email: userEmail };
             setUser(currentUser);
             setLoading(false);
-            console.log("current user", currentUser);
-            console.log("logged user email", loggedUserEmail);
 
-            // if (currentUser) {
-            //     axios.post("https://car-doctor-server-pi-lime.vercel.app/jwt", loggedUserEmail, { withCredentials: true })
-            //         .then(res => {
-            //             // console.log('token response', res.data);
-            //         })
-            // }
-            // else {
-            //     axios.post("https://car-doctor-server-pi-lime.vercel.app/logout", loggedUserEmail, { withCredentials: true })
-            //         .then(res => {
-            //             console.log(res.data);
-            //     })
-            // }
+            if (currentUser) {
+                axios.post("http://localhost:5000/jwt", loggedUserEmail, { withCredentials: true })
+                    .then(res => {
+                        console.log('token response', res.data);
+                    })
+            }
+            else {
+                axios.post("http://localhost:5000/logout", loggedUserEmail, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                })
+            }
 
         });
         return () => {
