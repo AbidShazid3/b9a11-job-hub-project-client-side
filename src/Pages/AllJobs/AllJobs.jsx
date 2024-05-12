@@ -16,7 +16,7 @@ const AllJobs = () => {
     }, [])
 
     return (
-        <div className="mt-10 bg-slate-300 p-4 rounded-lg">
+        <div className="mt-10 p-4">
             <div>
                 <form className="flex mb-5 justify-center">
                     <label className="input input-bordered flex items-center gap-2">

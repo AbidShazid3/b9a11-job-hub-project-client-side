@@ -54,7 +54,7 @@ const UpdateJob = () => {
                     <h1 className="text-4xl font-extrabold text-blue-500 animate__animated animate__heartBeat">Update A Job</h1>
                     <p className="py-3 text-base font-medium">Welcome to the Update Job page. Here, you can Update a job for others to see.</p>
                 </div>
-                <div className="bg-stone-200 rounded-lg">
+                <div className=" rounded-lg">
                     <form onSubmit={handleUpdateJob} className="card-body grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                         <div className="form-control">
                             <label className="label">

@@ -32,7 +32,7 @@ const MyJobs = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/jobs/${id}`, {
+                fetch(`http://localhost:5000/myJob/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -57,7 +57,7 @@ const MyJobs = () => {
                 <h2 className="text-3xl font-bold text-slate-500 mb-3">My Added Jobs Collection</h2>
                 <p>View and manage the jobs you have added. Stay organized and keep track of your job postings in one place</p>
             </div>
-            <div className="overflow-x-auto mt-5 bg-stone-300 p-4 rounded-xl">
+            <div className="overflow-x-auto mt-5  p-4 rounded-xl">
                 <table className="table">
                     {/* head */}
                     <thead>
