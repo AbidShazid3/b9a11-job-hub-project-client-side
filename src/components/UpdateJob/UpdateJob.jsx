@@ -26,7 +26,7 @@ const UpdateJob = () => {
         const details = { jobTitle, jobCategory, jobSalary, jobDescription, JobPostDate, jobDeadline, jobApplicants, photo }
         // console.log(details);
 
-        fetch(`http://localhost:5000/jobs/${_id}`, {
+        fetch(`https://job-hub-server-five.vercel.app/jobs/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

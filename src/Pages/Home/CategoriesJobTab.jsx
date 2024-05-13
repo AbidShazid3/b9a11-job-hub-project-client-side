@@ -9,7 +9,7 @@ const CategoriesJobTab = () => {
     const [activeTab, setActiveTab] = useState(0);
 
     useEffect(() => {
-        fetch("http://localhost:5000/jobs")
+        fetch("https://job-hub-server-five.vercel.app/jobs")
             .then(res => res.json())
             .then(data => {
                 setJobs(data);

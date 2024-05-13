@@ -30,7 +30,7 @@ const AllJobsSingleCard = () => {
         const details = { jobTitle, jobCategory, jobDescription, jobSalary, jobDeadline, resume, jobId: _id, applicantName: user.displayName, email: user.email, buyerEmail: userEmail }
         
 
-        fetch("http://localhost:5000/applied", {
+        fetch("https://job-hub-server-five.vercel.app/applied", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

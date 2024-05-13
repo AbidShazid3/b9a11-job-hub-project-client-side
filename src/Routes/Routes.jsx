@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             {
                 path: "/categoriesJob/:id",
                 element: <PrivetRoutes><JobCatDetails></JobCatDetails></PrivetRoutes>,
-                loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
+                loader: ({params})=> fetch(`https://job-hub-server-five.vercel.app/jobs/${params.id}`)
             },
             {
                 path: "/alljobs",
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             {
                 path: "/job/:id",
                 element: <PrivetRoutes><AllJobsSingleCard></AllJobsSingleCard></PrivetRoutes>,
-                loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
+                loader: ({params})=> fetch(`https://job-hub-server-five.vercel.app/jobs/${params.id}`)
             },
             {
                 path: "/appliedjob",
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
             {
                 path: "/updateJob/:id",
                 element: <PrivetRoutes><UpdateJob></UpdateJob></PrivetRoutes>,
-                loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
+                loader: ({params})=> fetch(`https://job-hub-server-five.vercel.app/jobs/${params.id}`)
             },
             {
                 path: "/profile",

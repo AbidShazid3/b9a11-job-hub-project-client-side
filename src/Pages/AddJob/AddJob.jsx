@@ -27,7 +27,7 @@ const AddJob = () => {
         const photo = form.photo.value;
         const details = { userName, userEmail, jobTitle, jobCategory, jobSalary, jobDescription, JobPostDate, jobDeadline, jobApplicants, photo }
 
-        fetch("http://localhost:5000/jobs", {
+        fetch("https://job-hub-server-five.vercel.app/jobs", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

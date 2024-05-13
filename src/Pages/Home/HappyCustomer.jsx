@@ -5,7 +5,7 @@ const HappyCustomer = () => {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/customer")
+        fetch("https://job-hub-server-five.vercel.app/customer")
             .then(res => res.json())
             .then(data => {
                 setCustomers(data);
