@@ -29,9 +29,8 @@ const AllJobsSingleCard = () => {
 
         const details = { jobTitle, jobCategory, jobDescription, jobSalary, jobDeadline, resume, jobId: _id, applicantName: user.displayName, email: user.email, buyerEmail: userEmail }
         
-        document.getElementById('my_modal_1').close();
 
-        fetch("http://localhost:5000/applies", {
+        fetch("http://localhost:5000/applied", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -40,6 +39,7 @@ const AllJobsSingleCard = () => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -47,10 +47,12 @@ const AllJobsSingleCard = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                    document.getElementById('my_modal_1').close();
                     e.target.reset();
                 }
             })
             .catch(error => {
+                console.log(error);
                 e.target.reset();
                 toast.error('Already Applied');
             })

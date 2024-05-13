@@ -22,10 +22,10 @@ const AddJob = () => {
         const jobDescription = form.jobDescription.value;
         const JobPostDate = startDate;
         const jobDeadline = endDate;
-        const jobApplicants = form.jobApplicants.value;
+        const jobApplicant = form.jobApplicants.value;
+        const jobApplicants =  parseInt(jobApplicant);
         const photo = form.photo.value;
         const details = { userName, userEmail, jobTitle, jobCategory, jobSalary, jobDescription, JobPostDate, jobDeadline, jobApplicants, photo }
-        console.log(details);
 
         fetch("http://localhost:5000/jobs", {
             method: "POST",
@@ -36,7 +36,6 @@ const AddJob = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
