@@ -10,8 +10,6 @@ const AllJobs = () => {
             .then(res => res.json())
             .then(data => {
                 setAllJobs(data);
-                console.log(data);
-
             })
     }, [])
 

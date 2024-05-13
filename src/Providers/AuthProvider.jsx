@@ -63,7 +63,7 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 axios.post("http://localhost:5000/jwt", loggedUserEmail, { withCredentials: true })
                     .then(res => {
-                        console.log('token response', res.data);
+                        console.log(res.data);
                     })
             }
             else {

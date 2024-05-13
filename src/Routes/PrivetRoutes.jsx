@@ -10,15 +10,15 @@ const PrivetRoutes = ({ children }) => {
     if (loading) {
         return (
             <div className="min-h-screen flex justify-center items-center">
-                <div className="">
-                    <span className="loading loading-spinner text-primary loading-xs"></span>
-                    <span className="loading loading-spinner text-secondary loading-sm"></span>
-                    <span className="loading loading-spinner text-accent loading-md"></span>
-                    <span className="loading loading-spinner text-neutral loading-lg"></span>
-                    <span className="loading loading-spinner text-error loading-lg"></span>
-                    <span className="loading loading-spinner text-info loading-md"></span>
-                    <span className="loading loading-spinner text-success loading-sm"></span>
-                    <span className="loading loading-spinner text-warning loading-xs"></span>
+                <div>
+                    <span className="loading loading-ring loading-xs  text-primary"></span>
+                    <span className="loading loading-ring loading-sm text-secondary"></span>
+                    <span className="loading loading-ring loading-md text-accent"></span>
+                    <span className="loading loading-ring loading-lg text-warning"></span>
+                    <span className="loading loading-ring loading-lg text-warning"></span>
+                    <span className="loading loading-ring loading-md text-accent"></span>
+                    <span className="loading loading-ring loading-sm text-secondary"></span>
+                    <span className="loading loading-ring loading-xs  text-primary"></span>
                 </div>
             </div>
         )
@@ -28,7 +28,7 @@ const PrivetRoutes = ({ children }) => {
         return children;
     }
 
-    return <Navigate state={location.pathname} to="/login" replace></Navigate>
+    return <Navigate to="/login" state={location.pathname} replace={true}></Navigate>
 };
 
 PrivetRoutes.propTypes = {

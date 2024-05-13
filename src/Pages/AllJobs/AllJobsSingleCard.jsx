@@ -1,11 +1,60 @@
 import { useLoaderData } from "react-router-dom";
 import banner from "../../assets/images/20967.jpg"
 import useAuth from "../../hooks/useAuth";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Swal from "sweetalert2";
 
 const AllJobsSingleCard = () => {
     const singleJob = useLoaderData();
-    const { jobTitle, jobCategory, jobDescription, jobSalary, jobApplicants, jobDeadline } = singleJob;
+    const { _id, jobTitle, userEmail, jobCategory, jobDescription, jobSalary, jobApplicants, jobDeadline } = singleJob;
+
     const { user } = useAuth();
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const resume = e.target.resumeLink.value;
+        const currentDate = new Date();
+        const deadline = new Date(jobDeadline);
+
+        if (user.email === userEmail) {
+            toast.error("You Added This Job. Can't Apply");
+            return;
+        }
+
+        if (currentDate > deadline) {
+            toast.error("Job deadline has passed. You can't apply.");
+            return;
+        }
+
+        const details = { jobTitle, jobCategory, jobDescription, jobSalary, jobDeadline, resume, jobId: _id, applicantName: user.displayName, email: user.email, buyerEmail: userEmail }
+        
+        document.getElementById('my_modal_1').close();
+
+        fetch("http://localhost:5000/applies", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(details)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Applied A New Job Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                    e.target.reset();
+                }
+            })
+            .catch(error => {
+                e.target.reset();
+                toast.error('Already Applied');
+            })
+    }
 
     return (
         <div className="mt-10">
@@ -33,15 +82,15 @@ const AllJobsSingleCard = () => {
                                 <h2>Name : {user.displayName}</h2>
                                 <h3>Email : {user.email}</h3>
                                 <div className="mt-2">
-                                    <form method="dialog">
+                                    <form onSubmit={handleSubmit} method="dialog">
                                         <div className="form-control">
                                             <input type="text" name="resumeLink" placeholder="Enter Your Resume Link" className="input input-bordered" />
                                         </div>
-                                        <div className="flex gap-2 mt-2">
-                                            <button className="btn btn-outline btn-accent text-base">Submit</button>
-                                            <button className="btn btn-outline btn-error text-base">Cancel</button>
+                                        <div className="mt-5">
+                                            <button className="btn btn-outline btn-accent text-base w-full">Submit</button>
                                         </div>
                                     </form>
+                                    <button onClick={() => document.getElementById('my_modal_1').close()} className="btn btn-outline btn-error text-base w-full mt-2">Cancel</button>
                                 </div>
                             </div>
                         </dialog>
